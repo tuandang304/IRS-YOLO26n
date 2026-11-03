@@ -1,0 +1,50 @@
+[
+ {
+  "name": "t_ir_eval",
+  "kind": "predict",
+  "splits": [
+   "val"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/t_ir.pt": "runs/remote/t_ir_final/ws/out/t_ir_final/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/t_ir.pt",
+   "split": "val",
+   "data_root": "ir"
+  }
+ },
+ {
+  "name": "yolo11n",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "chunks": [
+   15,
+   30,
+   45,
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo11n.pt",
+   "epochs": 60,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "data": "rgb"
+  },
+  "config": {},
+  "inputs": {},
+  "predict": {
+   "weights": "out/yolo11n/weights/best.pt",
+   "split": "val"
+  }
+ }
+]

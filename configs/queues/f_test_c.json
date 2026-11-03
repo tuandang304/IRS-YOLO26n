@@ -1,0 +1,39 @@
+[
+ {
+  "name": "test_b2_zdce",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/b2_zdce.pt": "runs/remote/b2_zdce/ws/out/b2_zdce/weights/best.pt",
+   "inputs/zdcepp_Epoch99.pth": "inputs/zdcepp_Epoch99.pth"
+  },
+  "predict": {
+   "weights": "inputs/b2_zdce.pt",
+   "split": "test",
+   "imgsz": 640,
+   "data_root": "rgb_zdce"
+  },
+  "zdce_splits": [
+   "test"
+  ]
+ },
+ {
+  "name": "test_yolo11n_704",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/yolo11n_704.pt": "runs/remote/yolo11n_704/ws/out/yolo11n_704/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/yolo11n_704.pt",
+   "split": "test",
+   "imgsz": 704
+  }
+ }
+]

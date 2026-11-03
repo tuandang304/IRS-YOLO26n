@@ -1,0 +1,120 @@
+[
+ {
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26s.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false
+  },
+  "config": {
+   "stop_after_epoch": null
+  },
+  "name": "s5_rgbteacher_s704",
+  "predict": {
+   "weights": "out/s5_rgbteacher_s704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  }
+ },
+ {
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 10,
+   "close_mosaic": 2,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false
+  },
+  "config": {
+   "stop_after_epoch": null
+  },
+  "name": "s5_night2x_704",
+  "inputs": {
+   "inputs/night_ids.txt": "splits/train_night.txt"
+  },
+  "predict": {
+   "weights": "out/s5_night2x_704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  },
+  "night_repeat": {
+   "ids_file": "inputs/night_ids.txt",
+   "k": 2
+  }
+ },
+ {
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "distill_model": "inputs/b1_proxy.pt"
+  },
+  "config": {
+   "stop_after_epoch": null,
+   "tgd_lambda": 1.0,
+   "head_kd": 1.0,
+   "teacher_rgb": true,
+   "ir_teacher": "inputs/rgb_teacher.pt"
+  },
+  "name": "s5_rgbkd_704",
+  "inputs": {
+   "inputs/b1_proxy.pt": "runs/remote/s1_b1_proxy/ws/out/s1_b1_proxy/weights/best.pt",
+   "inputs/rgb_teacher.pt": "runs/remote/s5_rgbteacher_s704/ws/out/s5_rgbteacher_s704/weights/best.pt"
+  },
+  "predict": {
+   "weights": "out/s5_rgbkd_704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  }
+ }
+]

@@ -1,0 +1,10 @@
+[
+ {
+  "name": "s4_img768_pred",
+  "kind": "predict",
+  "splits": ["val"],
+  "timeout": 1800,
+  "inputs": {"inputs/s4_img768.pt": "runs/remote/s4_img768/ws/out/s4_img768/weights/best.pt"},
+  "predict": {"weights": "inputs/s4_img768.pt", "split": "val", "imgsz": 768}
+ }
+]

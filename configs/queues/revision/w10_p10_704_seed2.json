@@ -1,0 +1,65 @@
+[
+ {
+  "name": "p10_704_seed2",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "chunks": [
+   15,
+   30,
+   45,
+   null
+  ],
+  "timeout": 9000,
+  "train": {
+   "data": "rgb",
+   "epochs": 60,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 2,
+   "plots": false,
+   "model": "inputs/yolov10n.pt",
+   "distill_model": "inputs/b1.pt"
+  },
+  "config": {
+   "paired": true,
+   "ir_only_dir": "auto",
+   "llsa": null,
+   "dnc_lambda": 0.0,
+   "tgd_lambda": 1.0,
+   "ir_teacher": "inputs/t_ir.pt",
+   "ir_soft": 0.3,
+   "ir_soft_dir": "auto"
+  },
+  "inputs": {
+   "inputs/yolov10n.pt": "weights/yolov10n.pt",
+   "inputs/b1.pt": "runs/remote/b1/ws/out/b1/weights/best.pt",
+   "inputs/t_ir.pt": "runs/remote/t_ir_final/ws/out/t_ir_final/weights/best.pt"
+  },
+  "predict": {
+   "weights": "out/p10_704_seed2/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  }
+ },
+ {
+  "name": "test_p10_704_seed2",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/p10_704_seed2.pt": "runs/remote/p10_704_seed2/ws/out/p10_704_seed2/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/p10_704_seed2.pt",
+   "split": "test",
+   "imgsz": 704
+  }
+ }
+]

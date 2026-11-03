@@ -1,0 +1,34 @@
+[
+ {
+  "name": "yolo11n_704",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "chunks": [
+   30,
+   45,
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo11n.pt",
+   "epochs": 60,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "data": "rgb"
+  },
+  "config": {},
+  "inputs": {},
+  "predict": {
+   "weights": "out/yolo11n_704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  }
+ }
+]

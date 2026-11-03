@@ -1,0 +1,102 @@
+[
+ {
+  "name": "test_b1",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/b1.pt": "runs/remote/b1/ws/out/b1/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/b1.pt",
+   "split": "test",
+   "imgsz": 640
+  }
+ },
+ {
+  "name": "test_yolo11n",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/yolo11n.pt": "runs/remote/yolo11n/ws/out/yolo11n/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/yolo11n.pt",
+   "split": "test",
+   "imgsz": 640
+  }
+ },
+ {
+  "name": "test_b1_704",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/b1_704.pt": "runs/remote/b1_704/ws/out/b1_704/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/b1_704.pt",
+   "split": "test",
+   "imgsz": 704
+  }
+ },
+ {
+  "name": "test_p_704",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/p_704.pt": "runs/remote/p_704/ws/out/p_704/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/p_704.pt",
+   "split": "test",
+   "imgsz": 704
+  }
+ },
+ {
+  "name": "test_b2_zdce",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/b2_zdce.pt": "runs/remote/b2_zdce/ws/out/b2_zdce/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/b2_zdce.pt",
+   "split": "test",
+   "imgsz": 640,
+   "data_root": "rgb_zdce"
+  },
+  "zdce_splits": [
+   "test"
+  ]
+ },
+ {
+  "name": "test_yolo11n_704",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/yolo11n_704.pt": "runs/remote/yolo11n_704/ws/out/yolo11n_704/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/yolo11n_704.pt",
+   "split": "test",
+   "imgsz": 704
+  }
+ }
+]

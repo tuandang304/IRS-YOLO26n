@@ -1,0 +1,96 @@
+[
+ {
+  "name": "s2_fuse_feat",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 5400,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "distill_model": "inputs/b1_proxy.pt"
+  },
+  "config": {
+   "paired": true,
+   "ir_only_dir": "auto",
+   "llsa": null,
+   "dnc_lambda": 0.0,
+   "tgd_lambda": 1.0,
+   "ir_teacher": "inputs/fusion_proxy.pt",
+   "ir_soft": 0.1,
+   "ir_soft_dir": "auto",
+   "teacher_fused": true,
+   "head_kd": 0.0
+  },
+  "predict": {
+   "weights": "out/s2_fuse_feat/weights/best.pt",
+   "split": "val"
+  },
+  "inputs": {
+   "inputs/b1_proxy.pt": "runs/remote/s1_b1_proxy/ws/out/s1_b1_proxy/weights/best.pt",
+   "inputs/fusion_proxy.pt": "runs/remote/s2_fusion_teacher_proxy/ws/out/s2_fusion_teacher_proxy/weights/best.pt"
+  }
+ },
+ {
+  "name": "s2_fuse_feat_head",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 5400,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "distill_model": "inputs/b1_proxy.pt"
+  },
+  "config": {
+   "paired": true,
+   "ir_only_dir": "auto",
+   "llsa": null,
+   "dnc_lambda": 0.0,
+   "tgd_lambda": 1.0,
+   "ir_teacher": "inputs/fusion_proxy.pt",
+   "ir_soft": 0.1,
+   "ir_soft_dir": "auto",
+   "teacher_fused": true,
+   "head_kd": 1.0
+  },
+  "predict": {
+   "weights": "out/s2_fuse_feat_head/weights/best.pt",
+   "split": "val"
+  },
+  "inputs": {
+   "inputs/b1_proxy.pt": "runs/remote/s1_b1_proxy/ws/out/s1_b1_proxy/weights/best.pt",
+   "inputs/fusion_proxy.pt": "runs/remote/s2_fusion_teacher_proxy/ws/out/s2_fusion_teacher_proxy/weights/best.pt"
+  }
+ }
+]

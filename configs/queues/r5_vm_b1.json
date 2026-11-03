@@ -1,0 +1,61 @@
+[
+ {
+  "name": "m3_plainkd_704",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "chunks": [
+   45,
+   null
+  ],
+  "timeout": 9000,
+  "train": {
+   "data": "rgb",
+   "epochs": 60,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "model": "yolo26n.pt",
+   "distill_model": "inputs/b1.pt"
+  },
+  "config": {
+   "paired": true,
+   "ir_only_dir": "auto",
+   "llsa": null,
+   "dnc_lambda": 0.0,
+   "tgd_lambda": 1.0,
+   "tgd_plain": true,
+   "ir_teacher": "inputs/t_ir.pt"
+  },
+  "inputs": {
+   "inputs/b1.pt": "runs/remote/b1/ws/out/b1/weights/best.pt",
+   "inputs/t_ir.pt": "runs/remote/t_ir_final/ws/out/t_ir_final/weights/best.pt"
+  },
+  "predict": {
+   "weights": "out/m3_plainkd_704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  }
+ },
+ {
+  "name": "test_m3_plainkd_704",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 1800,
+  "inputs": {
+   "inputs/m3_plainkd_704.pt": "runs/remote/m3_plainkd_704/ws/out/m3_plainkd_704/weights/best.pt"
+  },
+  "predict": {
+   "weights": "inputs/m3_plainkd_704.pt",
+   "split": "test",
+   "imgsz": 704
+  }
+ }
+]

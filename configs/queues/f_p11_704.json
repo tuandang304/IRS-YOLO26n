@@ -1,0 +1,48 @@
+[
+ {
+  "name": "p11_704",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "chunks": [
+   15,
+   30,
+   45,
+   null
+  ],
+  "timeout": 9000,
+  "train": {
+   "model": "yolo11n.pt",
+   "data": "rgb",
+   "epochs": 60,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "distill_model": "inputs/b1.pt"
+  },
+  "config": {
+   "paired": true,
+   "ir_only_dir": "auto",
+   "llsa": null,
+   "dnc_lambda": 0.0,
+   "tgd_lambda": 1.0,
+   "ir_teacher": "inputs/t_ir.pt",
+   "ir_soft": 0.3,
+   "ir_soft_dir": "auto"
+  },
+  "predict": {
+   "weights": "out/p11_704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  },
+  "inputs": {
+   "inputs/b1.pt": "runs/remote/yolo11n/ws/out/yolo11n/weights/best.pt",
+   "inputs/t_ir.pt": "runs/remote/t_ir_final/ws/out/t_ir_final/weights/best.pt"
+  }
+ }
+]

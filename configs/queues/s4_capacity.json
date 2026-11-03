@@ -1,0 +1,105 @@
+[
+ {
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false
+  },
+  "config": {
+   "stop_after_epoch": null
+  },
+  "name": "s4_img704",
+  "predict": {
+   "weights": "out/s4_img704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  }
+ },
+ {
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 768,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false
+  },
+  "config": {
+   "stop_after_epoch": null
+  },
+  "name": "s4_img768",
+  "predict": {
+   "weights": "out/s4_img768/weights/best.pt",
+   "split": "val",
+   "imgsz": 768
+  }
+ },
+ {
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n-p2.yaml",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "pretrained": "yolo26n.pt"
+  },
+  "config": {
+   "stop_after_epoch": null
+  },
+  "name": "s4_p2",
+  "predict": {
+   "weights": "out/s4_p2/weights/best.pt",
+   "split": "val",
+   "imgsz": 640
+  }
+ }
+]

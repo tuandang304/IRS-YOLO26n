@@ -1,0 +1,41 @@
+[
+ {
+  "name": "b2_zdce",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "chunks": [
+   15,
+   30,
+   45,
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n.pt",
+   "epochs": 60,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "data": "rgb_zdce"
+  },
+  "config": {},
+  "inputs": {
+   "inputs/zdcepp_Epoch99.pth": "inputs/zdcepp_Epoch99.pth"
+  },
+  "predict": {
+   "weights": "out/b2_zdce/weights/best.pt",
+   "split": "val",
+   "data_root": "rgb_zdce"
+  },
+  "zdce_splits": [
+   "train",
+   "val"
+  ]
+ }
+]

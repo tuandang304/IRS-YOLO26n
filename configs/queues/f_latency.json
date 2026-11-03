@@ -1,0 +1,32 @@
+[
+ {
+  "name": "latency_l4",
+  "kind": "latency",
+  "splits": [
+   "val"
+  ],
+  "timeout": 3600,
+  "inputs": {
+   "inputs/b1_704.pt": "runs/remote/b1_704/ws/out/b1_704/weights/best.pt",
+   "inputs/p_704.pt": "runs/remote/p_704/ws/out/p_704/weights/best.pt",
+   "inputs/yolo11n_704.pt": "runs/remote/yolo11n_704/ws/out/yolo11n_704/weights/best.pt"
+  },
+  "latency": [
+   {
+    "name": "b1_704",
+    "weights": "inputs/b1_704.pt",
+    "imgsz": 704
+   },
+   {
+    "name": "p_704",
+    "weights": "inputs/p_704.pt",
+    "imgsz": 704
+   },
+   {
+    "name": "yolo11n_704",
+    "weights": "inputs/yolo11n_704.pt",
+    "imgsz": 704
+   }
+  ]
+ }
+]

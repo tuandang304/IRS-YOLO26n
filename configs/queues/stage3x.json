@@ -1,0 +1,45 @@
+[
+ {
+  "name": "s3x_tgd_only1",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 5400,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "distill_model": "inputs/b1_proxy.pt"
+  },
+  "config": {
+   "paired": true,
+   "ir_only_dir": "auto",
+   "llsa": null,
+   "dnc_lambda": 0.0,
+   "tgd_lambda": 1.0,
+   "ir_teacher": "inputs/tir_proxy.pt"
+  },
+  "predict": {
+   "weights": "out/s3x_tgd_only1/weights/best.pt",
+   "split": "val"
+  },
+  "inputs": {
+   "inputs/b1_proxy.pt": "runs/remote/s1_b1_proxy/ws/out/s1_b1_proxy/weights/best.pt",
+   "inputs/tir_proxy.pt": "runs/remote/s1_tir_proxy/ws/out/s1_tir_proxy/weights/best.pt"
+  }
+ }
+]

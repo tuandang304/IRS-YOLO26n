@@ -1,0 +1,32 @@
+[
+ {
+  "name": "s2_fusion_teacher_proxy",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26s.pt",
+   "data": "rgb4_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false
+  },
+  "config": {
+   "fusion_input": true,
+   "paired": true
+  }
+ }
+]

@@ -1,0 +1,23 @@
+[
+ {
+  "name": "test_b2_704",
+  "kind": "predict",
+  "splits": [
+   "test"
+  ],
+  "timeout": 3600,
+  "zdce_splits": [
+   "test"
+  ],
+  "inputs": {
+   "inputs/b2_704.pt": "runs/remote/b2_704/ws/out/b2_704/weights/best.pt",
+   "inputs/zdcepp_Epoch99.pth": "inputs/zdcepp_Epoch99.pth"
+  },
+  "predict": {
+   "weights": "inputs/b2_704.pt",
+   "split": "test",
+   "data_root": "rgb_zdce",
+   "imgsz": 704
+  }
+ }
+]

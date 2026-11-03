@@ -1,0 +1,13 @@
+# Tested with Python 3.11
+ultralytics==8.4.173
+torch>=2.4
+torchvision
+numpy
+scipy
+matplotlib
+pillow
+opencv-python-headless
+pycocotools
+huggingface_hub
+pyyaml
+albumentations

@@ -1,0 +1,46 @@
+[
+ {
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "proxy_fraction": 0.2,
+  "proxy_seed": 0,
+  "chunks": [
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n.pt",
+   "data": "rgb_proxy",
+   "epochs": 15,
+   "close_mosaic": 3,
+   "imgsz": 704,
+   "batch": 32,
+   "workers": 8,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "distill_model": "inputs/b1_proxy.pt"
+  },
+  "config": {
+   "stop_after_epoch": null,
+   "tgd_lambda": 0.0,
+   "head_kd": 0.0,
+   "teacher_rgb": true,
+   "ir_teacher": "inputs/rgb_teacher.pt",
+   "head_kd_o2o": 1.0
+  },
+  "name": "s7_o2okd_704",
+  "inputs": {
+   "inputs/b1_proxy.pt": "runs/remote/s1_b1_proxy/ws/out/s1_b1_proxy/weights/best.pt",
+   "inputs/rgb_teacher.pt": "runs/remote/s5_rgbteacher_s704/ws/out/s5_rgbteacher_s704/weights/best.pt"
+  },
+  "predict": {
+   "weights": "out/s7_o2okd_704/weights/best.pt",
+   "split": "val",
+   "imgsz": 704
+  }
+ }
+]

@@ -1,0 +1,34 @@
+[
+ {
+  "name": "b1",
+  "kind": "train",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "chunks": [
+   15,
+   30,
+   45,
+   null
+  ],
+  "timeout": 7200,
+  "train": {
+   "model": "yolo26n.pt",
+   "epochs": 60,
+   "imgsz": 640,
+   "batch": 32,
+   "workers": 10,
+   "cache": "ram",
+   "seed": 0,
+   "plots": false,
+   "data": "rgb"
+  },
+  "config": {},
+  "inputs": {},
+  "predict": {
+   "weights": "out/b1/weights/best.pt",
+   "split": "val"
+  }
+ }
+]
